@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  influxdb:
+    image: influxdb:1.8
+    ports:
+      - 8086:8086
+    container_name: influxdb
+    volumes:
+      - volume-influxdb:/var/lib/influxdb
+    environment:
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=password
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - type: bind
+        source: "./grafana/"
+        target: "/var/lib/grafana"
+
+  pnn_telegraf:
+    build:
+      context: telegraf
+      dockerfile: Dockerfile
+    container_name: pnn
+    volumes:
+      - type: bind
+        source: "./local"
+        target: "/var/local"
+
+
+volumes:
+  volume-influxdb:
