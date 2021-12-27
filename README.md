@@ -19,6 +19,11 @@ docker-compose down
 pNNの値の推移をGrafanaで確認することができます  
 pNNの値が閾値をしばらく下回るとグラフのタイトル付近のハートの色が緑から赤に変わり、Slackに通知が飛びます  
 タイトル付近のハートが赤の状態から緑に戻ると数分後に再度Slackに通知が飛びます  
+ログイン方法は以下の通りです
+
+| URL | ユーザ名 | パスワード |
+| -- | -- | -- |
+| http://localhost:3000 | admin | password |
 
 # Slack
 ![image](https://user-images.githubusercontent.com/49583698/147468376-5e2c90e7-851f-4bf5-94ee-673d3ba2faab.png)
